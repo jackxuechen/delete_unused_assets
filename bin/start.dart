@@ -7,6 +7,10 @@ import 'helpers/console.dart';
 import 'helpers/helpers.dart';
 
 void main(List<String> arguments) async {
+  write(
+    "arguments:${arguments.toString()}",
+    colorType: ConsoleColorType.info,
+  );
   if (arguments.firstOrNull == '-h') {
     write(
       'Hi,\nYou Can use me like this\nflutter pub run delete_un_used_assets:start assetsPath',
@@ -82,7 +86,8 @@ void main(List<String> arguments) async {
                 (element) => !usedAssetsNames.contains(element),
               );
               for (final assetFileName in assetsFilesNamesWithoutAlreadyUsed) {
-                var _temp = assetFileName.substring(0,assetFileName.lastIndexOf('.'));
+                var _temp =
+                    assetFileName.substring(0, assetFileName.lastIndexOf('.'));
                 if (fileString.contains(_temp)) {
                   usedAssetsNames.add(assetFileName);
                 }
