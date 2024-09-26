@@ -25,10 +25,19 @@ a new folder `deleted_assets` in the root of your project with keeping track of 
 In your project root directory, run the following command:
 
 ```bash
-flutter pub run delete_un_used_assets:start <assetsPath>
+flutter pub run delete_un_used_assets:start <flutterProjectPath> <assetsPath>
 ```
 
-The available arg is `assetsPath`
+`flutterProjectPath`
+
+- `flutterProjectPath`: flutterProjectPath
+
+`assetsPath`
 
 - `assetsPath`: if you want to specify the path of the assets folder, you can do it by passing the path,
 but the default value is `assets`.
+
+eg:
+```bash
+flutter pub run delete_un_used_assets:start C:/Users/Administrator/Documents/code/flutterproject flutter_app/images
+```
