@@ -11,7 +11,7 @@ void main(List<String> arguments) async {
     "arguments:${arguments.toString()}",
     colorType: ConsoleColorType.info,
   );
-  if (arguments.firstOrNull == '-h') {
+  if (arguments.elementAtOrNull(0) == '-h') {
     write(
       'Hi,\nYou Can use me like this\nflutter pub run delete_un_used_assets:start assetsPath',
       colorType: ConsoleColorType.info,
@@ -21,9 +21,13 @@ void main(List<String> arguments) async {
   try {
     await Helpers.callWithStopwatch(
       () async {
-        final flutterProjectPath = Directory.current.path;
-        final assetsFolder = arguments.firstOrNull ?? 'assets';
-
+        final flutterProjectPath =
+            arguments.elementAtOrNull(0) ?? Directory.current.path;
+        write(
+          '\nflutterProjectPath：$flutterProjectPath\n',
+          colorType: ConsoleColorType.info,
+        );
+        final assetsFolder = arguments.elementAtOrNull(1) ?? 'assets';
         final assetsFolderPath = '$flutterProjectPath/$assetsFolder';
         final deletedAssetFolderName = '$flutterProjectPath/deleted_assets';
 
@@ -33,7 +37,10 @@ void main(List<String> arguments) async {
         );
 
         final assetsPath = path.join(flutterProjectPath, assetsFolderPath);
-
+        write(
+          '\nassetsPath：$assetsPath\n',
+          colorType: ConsoleColorType.info,
+        );
         //Skip searching for asset using in this folders
         final ignoreDirectories = [
           assetsFolderPath,
