@@ -42,6 +42,10 @@ void main(List<String> arguments) async {
           '.dart_tool',
           '.git',
           '.gradle',
+          '.fvm',
+          '.idea',
+          'windows',
+          'translate'
         ];
 
         final assetsFiles = Helpers.callWithStopwatch(
@@ -78,7 +82,8 @@ void main(List<String> arguments) async {
                 (element) => !usedAssetsNames.contains(element),
               );
               for (final assetFileName in assetsFilesNamesWithoutAlreadyUsed) {
-                if (fileString.contains(assetFileName)) {
+                var _temp = assetFileName.substring(0,assetFileName.lastIndexOf('.'));
+                if (fileString.contains(_temp)) {
                   usedAssetsNames.add(assetFileName);
                 }
               }
